@@ -1,0 +1,215 @@
+:root {
+  /*Primary Colors*/
+
+  --red: #ea5454;
+  --cyan: #44d3d2;
+  --orange: #fcae4a;
+  --blue: #549ef2;
+  --background: #f7f7f7;
+
+  /*Neutral Colors*/
+  --grey500: #4d4f62;
+  --grey400: #6a7178;
+  --white: #ffffff;
+
+  --family: "Poppins", sans-serif;
+  /*Weights: 200, 400, 600*/
+}
+
+/* Eliminar el modelo caja de css para medidas */
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.5rem;
+  background-color: var(--background);
+  font-family: var(--family);
+}
+
+.m-t {
+  margin-top: -15rem;
+}
+
+.main-container {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.title-h1,
+.title-h3 {
+  color: var(--grey500);
+}
+
+.title-h2 {
+  font-weight: 300;
+  font-size: 3rem;
+  color: var(--grey400);
+}
+
+.title-h3 {
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.p-description {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 6rem;
+  color: var(--grey400);
+}
+
+.card-description {
+  color: var(--grey400);
+  font-size: 1.5rem;
+  max-width: 300px;
+  text-align: left;
+  font-weight: light;
+  margin-bottom: 3rem;
+  margin-left: 2rem;
+}
+
+.cards-container {
+  /*background-color: var(--red);*/
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    ".      team      ."
+    "sup    .         calc"
+    ".      karma     .";
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 0.8rem;
+  height: 250px;
+  box-shadow: 1px 19px 45px -6px rgba(77, 79, 98, 0.44);
+  -webkit-box-shadow: 1px 19px 45px -6px rgba(77, 79, 98, 0.44);
+  -moz-box-shadow: 1px 19px 45px -6px rgba(77, 79, 98, 0.44);
+}
+
+.card img {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card-sup {
+  grid-area: sup;
+  border-top: 7px solid var(--cyan);
+  margin-right: 4rem;
+}
+
+.card-karma {
+  grid-area: karma;
+  border-top: 7px solid var(--orange);
+  margin-top: -8rem;
+}
+
+.card-team {
+  grid-area: team;
+  border-top: 7px solid var(--red);
+}
+
+.card-calculator {
+  grid-area: calc;
+  border-top: 7px solid var(--blue);
+  margin-left: 4rem;
+}
+
+/*Tablet*/
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: none;
+    justify-self: stretch; /* <-- esto es clave */
+    padding: 0 1rem;
+  }
+
+  .card-description{
+    font-size: 1.2rem;
+  }
+  .cards-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      ".      team      ."
+      "sup    .         calc"
+      ".      karma     .";
+  }
+
+  /* Reasignas las tarjetas a nuevas áreas */
+
+  .card-sup,
+  .card-team,
+  .card-calculator,
+  .card-karma {
+    margin: 0;
+    margin-top: 2rem;
+  }
+
+  .card-sup {
+    grid-area: team;
+  }
+
+  .card-team {
+    grid-area: sup;
+    margin-left: 8rem;
+  }
+
+  .card-calculator {
+    grid-area: karma;
+  }
+
+  .card-karma {
+    grid-area: calc;
+    margin-left: -8rem;
+  }
+}
+
+/*Mobile*/
+@media (max-width: 425px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "team"
+      "sup"
+      "karma"
+      "calc";
+    gap: 1.5rem;
+    margin-bottom: 6rem;
+  }
+
+  /* Anular posicionamiento manual */
+  .card-sup,
+  .card-karma,
+  .card-team,
+  .card-calculator {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    margin: 0 !important;
+  }
+
+  .title-h2,
+  .title-h1 {
+    font-size: 2rem;
+  }
+
+  .p-description,
+  .card-description {
+    font-size: 1.5rem;
+  }
+}
